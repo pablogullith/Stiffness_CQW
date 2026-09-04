@@ -27,6 +27,7 @@ Tempos:
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+from caminhada import estado_inicial, passo
 
 # PARAMETROS
 a = 51
@@ -83,68 +84,10 @@ def try_load_dat_files():
     return posicoes, data
 
 
-# ESTADO INICIAL
-def estado_inicial():
-
-    psiL = np.zeros(N, dtype=complex)
-    psiR = np.zeros(N, dtype=complex)
-    psiL[origin] = 1.0 / np.sqrt(2.0)
-    psiR[origin] = 1.0j / np.sqrt(2.0)
-    return psiL, psiR
-
-
-# UM PASSO DA CAMINHADA
-def passo(psiL, psiR):
-
-    # COIN
-    cL = np.zeros(N, dtype=complex)
-    cR = np.zeros(N, dtype=complex)
-
-    # Sitios internos:
-    # coin = Hadamard
-    cL[1:-1] = (psiL[1:-1] + psiR[1:-1]) / np.sqrt(2.0)
-    cR[1:-1] = (psiL[1:-1] - psiR[1:-1]) / np.sqrt(2.0)
-
-    # Borda esquerda:
-    # coin = NOT
-    #
-    # [0 1]
-    # [1 0]
-    #
-    # portanto:
-    #
-    # L -> R
-    # R -> L
-    cL[0] = psiR[0]
-    cR[0] = psiL[0]
-
-    # Borda direita:
-    # coin = NOT
-    cL[-1] = psiR[-1]
-    cR[-1] = psiL[-1]
-
-    # SHIFT
-    outL = np.zeros(N, dtype=complex)
-    outR = np.zeros(N, dtype=complex)
-
-    # L anda para j-1
-    #
-    # Em j=0 do vetor (j=-51), sairia da rede.
-    # Essa amplitude e descartada.
-    outL[:-1] = cL[1:]
-
-    # R anda para j+1
-    #
-    # Em j=N-1 do vetor (j=+51), sairia da rede.
-    # Essa amplitude e descartada.
-    outR[1:] = cR[:-1]
-    return outL, outR
-
-
 # SIMULACAO
 def simulate_confined_hadamard_walk():
 
-    psiL, psiR = estado_inicial()
+    psiL, psiR = estado_inicial(N)
 
     data = {}
 

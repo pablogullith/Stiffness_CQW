@@ -41,4 +41,6 @@ ax2.legend(loc='lower right')
 
 # 4. Clean up spacing and display
 plt.tight_layout()
+plt.savefig('Figura01.png', dpi=300)
+plt.savefig('Figura01.pdf')
 plt.show()
