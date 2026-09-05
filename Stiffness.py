@@ -1,4 +1,8 @@
 # Stiffness pelo método analítico (para N = 101, 201, 301)
+"""
+!!REVISAR STIFFNESS
+"""
+
 import numpy as np
 import math
 import matplotlib.pyplot as plt
