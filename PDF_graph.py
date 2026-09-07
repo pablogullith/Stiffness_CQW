@@ -1,21 +1,15 @@
 """
 Reproduces Fig. 2(i) of "Stiffness in Confined Quantum Walks"
 (Dantas, Vieira, Amorim).
-
-Simulates a discrete-time Hadamard quantum walk confined to a finite
-lattice by reflecting NOT-gate boundaries, for N = 101, 201, 301 sites.
-For each N, sigma(t) is recorded up to t_max = 10^5 steps; the empirical
-histogram (PDF) of sigma(t) over the last 8x10^4 steps is plotted
-together with a Gaussian fit -- reproducing panel (i) of Fig. 2.
 """
 
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import norm
 
-# ---------------------------------------------------------------------
+
 # Quantum walk simulation
-# ---------------------------------------------------------------------
+
 
 def run_confined_walk(N, t_max):
     """
@@ -66,10 +60,8 @@ def run_confined_walk(N, t_max):
     return sigma
 
 
-# ---------------------------------------------------------------------
-# Reproduce Fig. 2(i)
-# ---------------------------------------------------------------------
 
+# Reproduce Fig. 2(i)
 N_values = [101, 201, 301]
 colors = {101: "black", 201: "crimson", 301: "royalblue"}
 t_max = 100_000     # up to 10^5 time steps, as in the paper
