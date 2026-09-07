@@ -60,7 +60,11 @@ def simulate_stiffness(N, max_steps):
 
 # Replicate Figure 3 for confinement sizes N = 101, 201, 301
 plt.figure(figsize=(10, 6))
-max_t = 163000
+max_t = 1630000
+
+"""
+!Verificar o código
+"""
 
 for N in [101, 201, 301]:
     stiffness_vals = simulate_stiffness(N, max_t)
@@ -71,4 +75,5 @@ plt.ylabel('Stiffness S_nu')
 plt.title('Spreading Stiffness of Confined Quantum Walks')
 plt.legend()
 plt.grid(True, linestyle='--', alpha=0.7)
+plt.savefig("stiffness_plot.png", dpi=200)
 plt.show()
