@@ -132,10 +132,12 @@ def load_or_run_simulation(force_recompute=False):
     a = 50
     j_full, loc_init, gauss_init, unif_init = get_initial_states(a)
     
-    # Período efetivo TL = 163 para estado localizado; TG = 148 para estado Gaussiano
+    # Período efetivo TL = 163 para o estado localizado:
     t_snaps_loc = np.array([41, 82, 122, 163, 1630, 16300], dtype=np.int64)
+    # Período efetivo TG = 148 para o estado gaussiano (breathing cycle):
     t_snaps_gauss = np.array([37, 74, 110, 148, 1460, 14600], dtype=np.int64)
-    t_snaps_unif = np.array([41, 82, 122, 163, 1630, 16300], dtype=np.int64)
+    # Para o estado uniforme truncado, no painel (b) t = 73 (T/2 ~ 73) reproduz o vale central exato em j=0:
+    t_snaps_unif = np.array([37, 73, 110, 148, 1630, 16300], dtype=np.int64)
     
     t_max = 500_000
     
@@ -174,4 +176,3 @@ def setup_matplotlib_style():
         "xtick.top": True,
         "ytick.right": True,
     })
-
