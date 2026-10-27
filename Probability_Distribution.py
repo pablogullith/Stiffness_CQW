@@ -21,6 +21,7 @@ Tempos:
     163
     1630
     16300
+    500000
 """
 
 # Bibliotecas
@@ -34,7 +35,7 @@ a = 51
 N = 2 * a + 1
 j = np.arange(-a, a + 1)
 origin = a
-SNAP_TIMES = [41, 82, 122, 163, 1630, 16300]
+SNAP_TIMES = [41, 82, 122, 163, 1630, 16300, 500000]
 # Arquivos
 PREFIX = "DP_CQW_N=101_"
 # MATRIZES
@@ -181,6 +182,9 @@ for t in SNAP_TIMES:
 
 # DISTRIBUICAO UNIFORME
 p_unif = (1.0 / (a + 1) + 1.0 / a) / 2.0
+probability_color = "#007C91"
+uniform_color = "#E69F00"
+arrow_color = "#34495E"
 
 # CONFIGURACAO DA FIGURA
 
@@ -211,11 +215,11 @@ paineis = [
 for ax, (rotulo, t, ttexto, ymax, mostra_unif, setas) in zip(axes.flat, paineis):
 
     # Distribuicao
-    ax.plot(j, data[t], color="black", lw=0.8)
+    ax.plot(j, data[t], color=probability_color, lw=0.9)
     # Linha uniforme
     if mostra_unif:
 
-        ax.axhline(p_unif, color="red", linestyle="--", lw=1.0)
+        ax.axhline(p_unif, color=uniform_color, linestyle="--", lw=1.0)
 
     # Limites
     ax.set_xlim(-50, 50)
@@ -239,7 +243,7 @@ for ax, (rotulo, t, ttexto, ymax, mostra_unif, setas) in zip(axes.flat, paineis)
     )
 
     # Setas
-    seta_kw = dict(arrowprops=dict(arrowstyle="-|>", lw=1.3, color="black"))
+    seta_kw = dict(arrowprops=dict(arrowstyle="-|>", lw=1.3, color=arrow_color))
 
     if setas == "fora":
 
@@ -263,8 +267,8 @@ fig.subplots_adjust(
 )
 
 # SALVA FIGURA
-png_file = "Fig2_a-f.png"
-pdf_file = "Fig2_a-f.pdf"
+png_file = "Fig2_a-f_colorida.png"
+pdf_file = "Fig2_a-f_colorida.pdf"
 fig.savefig(png_file, dpi=300)
 fig.savefig(pdf_file)
 # FINAL

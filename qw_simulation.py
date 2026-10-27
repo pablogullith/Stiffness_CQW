@@ -124,20 +124,36 @@ def load_or_run_simulation(force_recompute=False):
     Executa a simulação completa até 500.000 passos para os 3 estados
     e salva/carrega em arquivo de cache compactado.
     """
+    t_snaps_loc = np.array([41, 82, 122, 163, 1630, 16300, 500000], dtype=np.int64)
+    t_snaps_gauss = np.array([36, 73, 110, 146, 1460, 14600, 500000], dtype=np.int64)
+    t_snaps_unif = np.array([36, 72, 108, 144, 1440, 14400, 500000], dtype=np.int64)
+
     if os.path.exists(CACHE_FILE) and not force_recompute:
-        data = np.load(CACHE_FILE)
-        return {k: data[k] for k in data.files}
+        with np.load(CACHE_FILE) as cached:
+            expected_times = {
+                't_snaps_loc': t_snaps_loc,
+                't_snaps_gauss': t_snaps_gauss,
+                't_snaps_unif': t_snaps_unif,
+            }
+            cache_matches = all(
+                key in cached.files and np.array_equal(cached[key], times)
+                for key, times in expected_times.items()
+            )
+            cache_matches = cache_matches and all(
+                key in cached.files and cached[key].shape[0] == len(times)
+                for key, times in (
+                    ('snaps_loc', t_snaps_loc),
+                    ('snaps_gauss', t_snaps_gauss),
+                    ('snaps_unif', t_snaps_unif),
+                )
+            )
+            if cache_matches:
+                return {k: cached[k] for k in cached.files}
+        print("Cache desatualizado; regenerando snapshots.")
         
     print("Gerando dados da simulação (500.000 passos)...")
     a = 50
     j_full, loc_init, gauss_init, unif_init = get_initial_states(a)
-    
-    # Período efetivo TL = 163 para o estado localizado:
-    t_snaps_loc = np.array([41, 82, 122, 163, 1630, 16300], dtype=np.int64)
-    # Período efetivo TG = 148 para o estado gaussiano (breathing cycle):
-    t_snaps_gauss = np.array([37, 74, 110, 148, 1460, 14600], dtype=np.int64)
-    # Para o estado uniforme truncado, no painel (b) t = 73 (T/2 ~ 73) reproduz o vale central exato em j=0:
-    t_snaps_unif = np.array([37, 73, 110, 148, 1630, 16300], dtype=np.int64)
     
     t_max = 500_000
     
@@ -150,12 +166,15 @@ def load_or_run_simulation(force_recompute=False):
         's_loc': s_loc,
         'c_loc': c_loc,
         'snaps_loc': snaps_loc,
+        't_snaps_loc': t_snaps_loc,
         's_gauss': s_gauss,
         'c_gauss': c_gauss,
         'snaps_gauss': snaps_gauss,
+        't_snaps_gauss': t_snaps_gauss,
         's_unif': s_unif,
         'c_unif': c_unif,
         'snaps_unif': snaps_unif,
+        't_snaps_unif': t_snaps_unif,
     }
     
     np.savez_compressed(CACHE_FILE, **results)

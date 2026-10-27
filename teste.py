@@ -20,6 +20,7 @@ Tempos:
     163
     1630
     16300
+    500000
 """
 
 # Bibliotecas
@@ -33,7 +34,7 @@ N = 2 * a + 1
 dim = 2 * N
 j = np.arange(-a, a + 1)
 origin = a
-SNAP_TIMES = [41, 82, 122, 163, 1630, 16300]
+SNAP_TIMES = [41, 82, 122, 163, 1630, 16300, 500000]
 # Arquivos
 PREFIX = "DP_CQW_N=101_"
 
