@@ -256,8 +256,8 @@ def main():
         hspace=0.25
     )
     
-    #png_out = "fig2.png"
-    pdf_out = os.path.join(IMAGE_DIR, "fig2.pdf")
+    #png_out = "Figura2.png"
+    pdf_out = os.path.join(IMAGE_DIR, "Figura02.pdf")
     #plt.savefig(png_out, dpi=300)
     plt.savefig(pdf_out)
     #print(f"Complete figure saved to {png_out} and {pdf_out}")
