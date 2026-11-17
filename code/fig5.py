@@ -19,7 +19,9 @@ from numba import njit
 
 from qw_simulation import get_initial_states, setup_matplotlib_style
 
-CACHE_FILE = "fig5_cache.npz"
+CODE_DIR = os.path.dirname(os.path.abspath(__file__))
+IMAGE_DIR = os.path.join(os.path.dirname(CODE_DIR), "images")
+CACHE_FILE = os.path.join(CODE_DIR, "fig5_cache.npz")
 
 
 @njit(fastmath=True, nogil=True)
@@ -224,8 +226,10 @@ def load_or_run_simulation(
     return cached
 
 
-def plot_fig5(data, pdf_out="Figura05.pdf"):
+def plot_fig5(data, pdf_out=None):
     """Generate Figure 5 with its time-series and finite-size panels."""
+    if pdf_out is None:
+        pdf_out = os.path.join(IMAGE_DIR, "Figura05.pdf")
     setup_matplotlib_style()
     colors = ("black", "red", "blue")
     labels = (

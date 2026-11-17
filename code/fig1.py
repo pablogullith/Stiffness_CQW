@@ -1,6 +1,9 @@
 #Author: Pablo Gullith
+import os
 import numpy as np
 import matplotlib.pyplot as plt
+
+IMAGE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "images")
 
 # 1. Math functions
 def p(x, t, n_terms=10):
@@ -42,5 +45,5 @@ ax2.legend(loc='lower right')
 # 4. Clean up spacing and display
 plt.tight_layout()
 #plt.savefig('Figura01.png', dpi=300)
-plt.savefig('Figura01.pdf')
+plt.savefig(os.path.join(IMAGE_DIR, 'Figura01.pdf'))
 plt.show()

@@ -18,7 +18,9 @@ from matplotlib.lines import Line2D
 import matplotlib.ticker as ticker
 from numba import njit
 
-CACHE_FILE = "fig3_cache.npz"
+CODE_DIR = os.path.dirname(os.path.abspath(__file__))
+IMAGE_DIR = os.path.join(os.path.dirname(CODE_DIR), "images")
+CACHE_FILE = os.path.join(CODE_DIR, "fig3_cache.npz")
 
 
 def setup_matplotlib_style():
@@ -238,7 +240,7 @@ def plot_fig3(S_loc, S_gauss, S_unif, t_max=500_000, tc=20_000):
     
     fig.subplots_adjust(left=0.10, right=0.96, top=0.96, bottom=0.12)
     
-    pdf_out = "Figura03.pdf"
+    pdf_out = os.path.join(IMAGE_DIR, "Figura03.pdf")
     #png_out = "Figura03.png"
     plt.savefig(pdf_out)
     #plt.savefig(png_out, dpi=300)

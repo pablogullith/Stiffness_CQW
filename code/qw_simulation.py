@@ -9,7 +9,7 @@ import os
 import numpy as np
 from numba import njit
 
-CACHE_FILE = "qw_simulation_cache.npz"
+CACHE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "qw_simulation_cache.npz")
 
 @njit(fastmath=True)
 def _simulate_qw_core(psiL_init, psiR_init, j_vals, t_max, record_snapshots, snapshot_times):

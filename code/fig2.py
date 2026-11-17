@@ -7,10 +7,13 @@ Generates the 12-panel figure (a)-(l).
 """
 
 import numpy as np
+import os
 import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from scipy.stats import norm, beta
 from qw_simulation import load_or_run_simulation, setup_matplotlib_style
+
+IMAGE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "images")
 
 def main():
     setup_matplotlib_style()
@@ -254,7 +257,7 @@ def main():
     )
     
     #png_out = "fig2.png"
-    pdf_out = "fig2.pdf"
+    pdf_out = os.path.join(IMAGE_DIR, "fig2.pdf")
     #plt.savefig(png_out, dpi=300)
     plt.savefig(pdf_out)
     #print(f"Complete figure saved to {png_out} and {pdf_out}")
