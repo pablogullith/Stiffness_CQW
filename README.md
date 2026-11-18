@@ -9,30 +9,12 @@ The project studies how confinement changes the spreading dynamics of a discrete
 A confined quantum walk evolves on a finite one-dimensional lattice with reflecting auxiliary boundaries. The model combines:
 
 - A Hadamard coin in the bulk lattice
-- Pauli-$X$ reflecting coins at the auxiliary boundaries
-- A conditional shift of the left- and right-moving coin components
+- Pauli-X reflecting coins at the auxiliary boundaries
+- A conditional shift of the left and right moving coin components
 - Localized, Gaussian, and truncated-uniform initial states
 - Long-time averages and finite-size simulations
 
 The repository provides both a reproducible implementation and a tutorial path for exploring the analysis behind the manuscript's Figures 1–5.
-
-## Scientific quantities
-
-The scripts and notebook calculate or visualize:
-
-- **Probability density:** $P(j,t)$ across the lattice
-- **Dispersion:** $\sigma(t)=\sqrt{\langle j^2\rangle-\langle j\rangle^2}$
-- **Coin coherence:** $C(t)=|\langle L|R\rangle|^2$
-- **Spreading stiffness:** $S_\nu(t)=\bar{\nu}_H/(\bar{\nu}_H+\nu_\sigma(t))$
-- **Finite-size stiffness moments:** $\langle S_\nu\rangle$ and $\langle S_\nu^2\rangle$
-- **Normalized Kullback-Leibler divergence:** $D_{\mathrm{KL}}$
-
-The main conventions are:
-
-- $N=2a+1$ is the number of physical bulk sites.
-- $N$ is odd.
-- Auxiliary reflecting sites occupy $j=\pm(a+1)$.
-- The symmetric coin state is $\lvert\chi\rangle=(\lvert L\rangle+i\lvert R\rangle)/\sqrt{2}$.
 
 ## Repository structure
 
