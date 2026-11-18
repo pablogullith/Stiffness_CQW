@@ -2,7 +2,7 @@
 
 This repository contains the numerical implementation, cached results, generated figures, and guided notebook associated with **“Stiffness in Confined Quantum Walks”** by Pablo G. M. Dantas, Rafael Vieira, and Edgard P. M. Amorim.
 
-The project studies how confinement changes the spreading dynamics of a discrete-time quantum walk. It compares three initial spatial distributions—localized, Gaussian, and truncated-uniform—and analyzes the resulting probability distributions, dispersion, coin coherence, spreading stiffness, finite-size scaling, and information divergence.
+The project studies how confinement changes the spreading dynamics of a discrete-time quantum walk. It compares three initial spatial distributions:localized, Gaussian, and truncated uniform; and analyzes the resulting probability distributions, dispersion, coin coherence, spreading stiffness, finite-size scaling, and information divergence.
 
 ## About the project
 
@@ -23,7 +23,11 @@ The scripts and notebook calculate or visualize:
 - **Probability density:** $P(j,t)$ across the lattice
 - **Dispersion:** $\sigma(t)=\sqrt{\langle j^2\rangle-\langle j\rangle^2}$
 - **Coin coherence:** $C(t)=|\langle L|R\rangle|^2$
-- **Spreading stiffness:** $S_\nu(t)=\bar{\nu}_H/(\bar{\nu}_H+\nu_\sigma(t))$
+- **Spreading stiffness:**
+
+  $$
+  S_\nu(t)=\frac{\bar{\nu}_H}{\bar{\nu}_H+\nu_\sigma(t)}
+  $$
 - **Finite-size stiffness moments:** $\langle S_\nu\rangle$ and $\langle S_\nu^2\rangle$
 - **Normalized Kullback-Leibler divergence:** $D_{\mathrm{KL}}$
 
