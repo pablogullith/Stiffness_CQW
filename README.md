@@ -2,7 +2,7 @@
 
 This repository contains the numerical implementation, cached results, generated figures, and guided notebook associated with **“Stiffness in Confined Quantum Walks”** by Pablo G. M. Dantas, Rafael Vieira, and Edgard P. M. Amorim.
 
-The project studies how confinement changes the spreading dynamics of a discrete-time quantum walk. It compares three initial spatial distributions:localized, Gaussian, and truncated uniform; and analyzes the resulting probability distributions, dispersion, coin coherence, spreading stiffness, finite-size scaling, and information divergence.
+The project studies how confinement changes the spreading dynamics of a discrete-time quantum walk. It compares three initial spatial distributions: localized, Gaussian, and truncated uniform; and analyzes the resulting probability distributions, dispersion, coin coherence, spreading stiffness, finite-size scaling, and information divergence.
 
 ## About the project
 
