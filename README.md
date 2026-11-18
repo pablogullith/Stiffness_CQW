@@ -23,11 +23,7 @@ The scripts and notebook calculate or visualize:
 - **Probability density:** $P(j,t)$ across the lattice
 - **Dispersion:** $\sigma(t)=\sqrt{\langle j^2\rangle-\langle j\rangle^2}$
 - **Coin coherence:** $C(t)=|\langle L|R\rangle|^2$
-- **Spreading stiffness:**
-
-  $$
-  S_\nu(t)=\frac{\bar{\nu}_H}{\bar{\nu}_H+\nu_\sigma(t)}
-  $$
+- **Spreading stiffness:** $S_\nu(t)=\bar{\nu}_H/(\bar{\nu}_H+\nu_\sigma(t))$
 - **Finite-size stiffness moments:** $\langle S_\nu\rangle$ and $\langle S_\nu^2\rangle$
 - **Normalized Kullback-Leibler divergence:** $D_{\mathrm{KL}}$
 
